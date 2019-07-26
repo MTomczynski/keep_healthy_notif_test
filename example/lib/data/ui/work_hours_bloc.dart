@@ -28,10 +28,10 @@ class WorkHoursBloc extends Bloc<WorkHoursEvent, WorkHoursState> {
     } else if (event is SaveWorkHours) {
       await workHoursRepository.saveWorkHours(event.workHours);
       notificationManager.clearNotifications();
-//      NotificationRule rule =
-//          NotificationRule(1, "Test rule", "Testing", "Just testing", 1);
-//      notificationManager.setupDailyNotifications(event.workHours, rule);
-      await notificationManager.showNotification();
+      NotificationRule rule =
+          NotificationRule(1, "Test rule", "Testing", "Just testing", 1);
+      notificationManager.setupDailyNotifications(event.workHours, rule);
+      //await notificationManager.showNotification();
       yield WorkHoursLoaded(event.workHours);
       return;
     } else if (event is ShowTempWorkHours) {

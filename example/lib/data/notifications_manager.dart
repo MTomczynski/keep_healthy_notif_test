@@ -18,18 +18,6 @@ initializeLocalNotificationsPlugin() {
 class NotificationManager {
   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = initializeLocalNotificationsPlugin();
 
-  Future<void> showNotification() async {
-    var androidPlatformChannelSpecifics = AndroidNotificationDetails(
-        'your channel id', 'your channel name', 'your channel description',
-        importance: Importance.Max, priority: Priority.High, ticker: 'ticker');
-    var iOSPlatformChannelSpecifics = IOSNotificationDetails();
-    var platformChannelSpecifics = NotificationDetails(
-        androidPlatformChannelSpecifics, iOSPlatformChannelSpecifics);
-    await flutterLocalNotificationsPlugin.show(
-        0, 'plain title', 'plain body', platformChannelSpecifics,
-        payload: 'item x');
-  }
-
   void clearNotifications() {
     flutterLocalNotificationsPlugin.cancelAll();
   }
